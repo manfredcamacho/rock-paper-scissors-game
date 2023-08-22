@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import useModal from "./hooks/useModal";
+import Header from "./components/Header/Header";
+import Title from "./components/Title";
+import Score from "./components/Score";
+import Game from "./components/Game";
+import Footer from "./components/Footer";
+import Button from "./components/Button";
+import Modal from "./components/Modal";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isShowingModal, toggleModal] = useModal();
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container mx-auto min-h-screen space-y-[30px] p-[30px] pb-[60px] flex flex-col text-light">
+      <Header>
+        <Title />
+        <Score />
+      </Header>
+      <Game />
+      <Footer>
+        <Button onClick={toggleModal}>Rules</Button>
+      </Footer>
+      <Modal show={isShowingModal} onCloseButtonClick={toggleModal} />
+    </div>
+  );
 }
 
-export default App
+export default App;
