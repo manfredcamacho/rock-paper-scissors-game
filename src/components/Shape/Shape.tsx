@@ -1,19 +1,21 @@
-import RockIcon from "../../assets/icon-rock.svg";
-import PaperIcon from "../../assets/icon-paper.svg";
-import ScissorsIcon from "../../assets/icon-scissors.svg";
-import LizardIcon from "../../assets/icon-lizard.svg";
-import SpockIcon from "../../assets/icon-spock.svg";
+import RockIcon from "../../assets/images/icon-rock.svg";
+import PaperIcon from "../../assets/images/icon-paper.svg";
+import ScissorsIcon from "../../assets/images/icon-scissors.svg";
+import LizardIcon from "../../assets/images/icon-lizard.svg";
+import SpockIcon from "../../assets/images/icon-spock.svg";
+import { Shape } from "../../types";
 
-type ShapeProps = {
-  variant: "rock" | "paper" | "scissors" | "lizard" | "spock";
+type ShapeButtonProps = {
+  variant: Shape;
+  handleClick?: () => void;
   className?: string;
 };
 
-const Shape = (props: ShapeProps) => {
+const ShapeButton = ({ variant, handleClick, className }: ShapeButtonProps) => {
   let img = null;
   let colors = "";
 
-  switch (props.variant) {
+  switch (variant) {
     case "rock":
       img = RockIcon;
       colors = "from-rock-l to-rock-d";
@@ -39,24 +41,25 @@ const Shape = (props: ShapeProps) => {
   }
 
   return (
-    <div className={props.className}>
-      <div
-        className={`flex items-center justify-center w-24 h-24
+    <div className={className}>
+      <button
+        className={`flex items-center justify-center w-[100px] h-[100px]
         bg-gradient-to-r ${colors} rounded-full
         shadow-[inset_0_-4px_0px_rgba(0,0,0,0.4)]
-        `}
+        ${handleClick ? "cursor-pointer" : "cursor-default"}}`}
+        {...(handleClick ? { onClick: handleClick } : { disabled: true })}
       >
         <div
-          className="flex items-center justify-center w-[72px] h-[72px]
+          className="flex items-center justify-center w-[77px] h-[77px]
         bg-light rounded-full 
         shadow-[inset_0_4px_0px_rgba(0,0,0,0.1)]
         "
         >
-          <img className="w-8 h-8" src={img} alt={props.variant} />
+          <img className="w-[33px] h-[37px]" src={img} alt={variant} />
         </div>
-      </div>
+      </button>
     </div>
   );
 };
 
-export default Shape;
+export default ShapeButton;

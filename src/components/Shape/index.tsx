@@ -1,3 +1,3 @@
-import Shape from "./Shape";
+import ShapeButton from "./Shape";
 
-export default Shape;
+export default ShapeButton;

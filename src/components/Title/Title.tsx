@@ -1,10 +1,10 @@
+import LogoImg from "../../assets/images/logo.svg";
+
 const Title = () => {
   return (
-    <h1 className={`uppercase leading-none m-[11px]`}>
-      <p>Rock</p>
-      <p>Paper</p>
-      <p>Scissors</p>
-    </h1>
+    <div className={`flex m-[11px]`}>
+      <img className="w-20" src={LogoImg} alt="logo" />
+    </div>
   );
 };
 

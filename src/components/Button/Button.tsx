@@ -1,17 +1,18 @@
 type ButtonProps = {
   onClick: () => void;
+  className?: string;
   children: React.ReactNode;
 };
 
-const Button = (props: ButtonProps) => {
+const Button = ({ onClick, className, children }: ButtonProps) => {
   return (
     <button
-      className="flex justify-center items-center border-solid 
+      className={`${className} flex justify-center items-center border-solid 
       border-[1px] border-light rounded-md p-[5px]
-      w-24 tracking-[0.2em] text-xs uppercase"
-      onClick={props.onClick}
+      w-24 h-[30px] tracking-[0.2em] text-xs uppercase`}
+      onClick={onClick}
     >
-      {props.children}
+      {children}
     </button>
   );
 };
