@@ -99,7 +99,7 @@ const Game = ({ gameMode = "classic", setScore }: GameProps) => {
               />
               <ShapeButton
                 className="-translate-y-[80%]"
-                onClick={() => handleUserShape("paper")}
+                handleClick={() => handleUserShape("paper")}
                 variant="paper"
               />
             </>
